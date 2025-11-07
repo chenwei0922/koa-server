@@ -1,0 +1,12 @@
+node_modules
+.git
+.env.local
+.env*.local
+src/config/*.wt
+src/config/diagnostic.data
+src/config/journal
+src/config/*.lock
+src/config/WiredTiger*
+src/config/storage.bson
+*.log
+

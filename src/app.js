@@ -4,7 +4,11 @@ import cors from '@koa/cors';
 import router from './routes/index.js';
 import connectDB from './config/db.js';
 
-connectDB();
+// Connect to database (will reuse connection in serverless)
+connectDB().catch((err) => {
+  // eslint-disable-next-line no-console
+  console.error('Failed to connect to database:', err.message);
+});
 
 const app = new Koa();
 

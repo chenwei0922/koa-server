@@ -43,3 +43,40 @@ pnpm start
   - POST `/api/products` 新建商品；PUT/DELETE `/api/products/:id`
   - POST `/api/orders` 下单；GET `/api/orders/mine` 我的订单；GET `/api/orders/:id` 订单详情
   - GET `/api/users/me` 个人信息
+
+## 部署到 Vercel
+
+项目已配置为支持 Vercel serverless 部署。
+
+### 部署步骤：
+
+1. **安装 Vercel CLI**（如果还没有）：
+```bash
+npm i -g vercel
+```
+
+2. **登录 Vercel**：
+```bash
+vercel login
+```
+
+3. **在项目根目录部署**：
+```bash
+vercel
+```
+
+4. **设置环境变量**：
+在 Vercel 项目设置中添加以下环境变量：
+- `MONGODB_URI` - MongoDB 连接字符串（例如：`mongodb+srv://user:password@cluster.mongodb.net/dbname`）
+- `JWT_SECRET` - JWT 密钥（用于 token 签名）
+
+5. **生产环境部署**：
+```bash
+vercel --prod
+```
+
+### 注意事项：
+
+- 确保使用云 MongoDB（如 MongoDB Atlas），而不是本地 MongoDB
+- 数据库连接已优化为 serverless 环境，会自动重用连接
+- 所有路由都会通过 `/api/*` 路径访问
