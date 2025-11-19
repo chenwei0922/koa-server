@@ -6,8 +6,11 @@ export function setupWebRTCSignaling(server) {
     // path: '/api/socket.io/',
     cors: {
       origin: '*',
-      methods: ['GET', 'POST'],
+      methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+      allowedHeaders: ["Content-Type", "Authorization"],
+      credentials: false // 如果 origin 是 *，credentials 必须为 false
     },
+    transports: ['websocket', 'polling'] // 明确指定传输方式
   })
   //webrtc 信令逻辑
   const rooms = new Map() //房间列表{roomId: Set<userId>}
